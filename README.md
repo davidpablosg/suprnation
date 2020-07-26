@@ -8,24 +8,33 @@
 $ npm install
 ```
 
-## Running the app
+## Running the app+api
 
 ```bash
 # development
 $ npm run start
+Go to http://localhost:1234
 
 # watch mode
 $ npm run start:dev
+Go to http://localhost:1234
 
 # production mode
 $ npm run start:prod
 ```
 
-## App in action
-[Browser](http://localhost:1234)
+## Running the api
+You can run only the API and check auto-generated Documentation 
 
-## Api Documentation
-[Swagger](http://localhost:3000/api)
+```bash
+# development
+$ npm run server
+Go to http://localhost:3000/api
+
+# watch mode
+$ npm run server:dev
+Go to http://localhost:3000/api
+```
 
 ## Test
 
