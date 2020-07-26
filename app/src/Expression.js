@@ -2,7 +2,7 @@ import React from 'react';
 import ErrorBoundary from './ErrorBoundary';
 import InvalidExpression from './InvalidExpression';
 
-const API_ROUTE = 'http://localhost:3000/api';
+const API_ROUTE = process.env.API_URL;
 const VALIDATE_ROUTE = API_ROUTE + '/validate/';
 const EVALUATE_ROUTE = API_ROUTE + '/evaluate/';
 
@@ -24,55 +24,56 @@ class Expression extends React.Component {
     }
 
     this.timeout = setTimeout(() => {
-        if (expression) {
-          fetch(`${VALIDATE_ROUTE}${expression}`)
-            .then((response) => response.json())
-            .then((data) => {
-                console.log(expression)
-              this.setState({ validExpression: data });
-            });
-        }
+      if (expression) {
+        fetch(`${VALIDATE_ROUTE}${expression}`)
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(expression);
+            this.setState({ validExpression: data });
+          });
+      }
     }, 1000);
 
     this.setState({
       expression: expression,
-      validExpression: true
+      validExpression: true,
     });
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    if(this.state.expression === '') return;
+    if (this.state.expression === '') return;
     fetch(`${EVALUATE_ROUTE}${this.state.expression}`)
       .then((response) => response.json())
       .then((data) => {
-        this.props.onFormSubmit({operation: this.state.expression, result: data, id: new Date().getUTCMilliseconds()});
-        this.setState({expression: '', validExpression: true});
+        this.props.onFormSubmit({
+          operation: this.state.expression,
+          result: data,
+          id: new Date().getUTCMilliseconds(),
+        });
+        this.setState({ expression: '', validExpression: true });
       });
   }
 
   render() {
     return (
-        <div>
-          <InvalidExpression show={!this.state.validExpression}/>
-          <form
-            className="form"
-            onSubmit={this.handleSubmit}
+      <div>
+        <InvalidExpression show={!this.state.validExpression} />
+        <form className="form" onSubmit={this.handleSubmit}>
+          <input
+            className="input"
+            placeholder="Introduce a mathematical expression to evaluate"
+            value={this.state.expression}
+            onChange={this.handleChange}
+          />
+          <button
+            className="button"
+            disabled={!this.state.validExpression ? 'disabled' : ''}
           >
-              <input
-                className="input"
-                placeholder="Introduce a mathematical expression to evaluate"
-                value={this.state.expression}
-                onChange={this.handleChange}
-              />
-            <button
-                className='button'
-                disabled={!this.state.validExpression ? 'disabled': ''}
-                >
-                Submit
-            </button>
-          </form>
-        </div>
+            Submit
+          </button>
+        </form>
+      </div>
     );
   }
 }
