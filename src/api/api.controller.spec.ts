@@ -5,7 +5,6 @@ import { ApiService } from './api.service';
 describe('ApiController', () => {
   let apiController: ApiController;
 
-  // @ts-ignore
   beforeEach(async () => {
     const app: TestingModule = await Test.createTestingModule({
       controllers: [ApiController],
