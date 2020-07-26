@@ -26,7 +26,7 @@ export class ApiController {
   @ApiOperation({summary: 'Validate expression', description: 'Receives expression as string, return number'})
   @ApiOkResponse({ description: 'Returns a number with the result of the expression' })
   @Get('evaluate/:expression')
-  async evaluateExpression(@Param('expression') expression:string ): Promise<number> {
+  async evaluateExpression(@Param('expression') expression:string ): Promise<number|null> {
     return this.apiService.evaluateExpression(expression);
   }
 }
