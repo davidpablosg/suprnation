@@ -21,6 +21,12 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
+## App in action
+[Browser](http://localhost:1234)
+
+## Api Documentation
+[Swagger](http://localhost:3000/api)
+
 ## Test
 
 ```bash
