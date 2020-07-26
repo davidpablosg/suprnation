@@ -3,7 +3,7 @@ const math = require('mathjs');
 import { Injectable } from '@nestjs/common';
 
 @Injectable()
-export class CalculatorService {
+export class ApiService {
     public validateExpression(expression: string): boolean {
         const sanitizedExpression = expression.split(' ').join('');
         const myRegex = SuperExpressive()
