@@ -1,0 +1,35 @@
+.header > a {
+    display: inline-block;
+    background-image: url(http://suprnation.io/wp-content/uploads/2017/10/SuprNation-logo-01.png);
+    background-repeat: no-repeat;
+    width: 335px;
+    height: 60px;
+    overflow: hidden;
+    text-indent: -9999px;
+}
+
+.wrapper {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="4" height="4" viewBox="0 0 4 4"%3E%3Cpath fill="%239C92AC" fill-opacity="0.4" d="M1 3h1v1H1V3zm2-2h1v1H3V1z"%3E%3C/path%3E%3C/svg%3E');
+}
+
+.frame {
+    width: 40vw;
+    max-width: 400px;
+}
+
+.form {
+    display: flex;
+    padding: 10px;
+}
+
+.input {
+    width: 100%;
+}
+
+.list-wrapper {
+    overflow-y: auto;
+}

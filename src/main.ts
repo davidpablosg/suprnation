@@ -6,6 +6,8 @@ async function bootstrap() {
   const app = await NestFactory.create(ApiModule);
   const servicePort = 3000;
 
+  app.enableCors();
+
   const apiDocOptions = new DocumentBuilder()
     .setTitle('Public API')
     .setDescription('API providing functionality for React App')
