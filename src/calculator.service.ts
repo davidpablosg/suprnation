@@ -1,4 +1,5 @@
 const SuperExpressive = require('super-expressive');
+const math = require('mathjs');
 import { Injectable } from '@nestjs/common';
 
 @Injectable()
@@ -43,5 +44,10 @@ export class CalculatorService {
             .endOfInput
             .toRegex();
         return myRegex.test(sanitizedExpression);
+    }
+
+    public evaluateExpression(expression: string): number {
+        const sanitizedExpression = expression.split(' ').join('');
+        return (this.validateExpression(sanitizedExpression) ? math.evaluate(sanitizedExpression) : null);
     }
 }

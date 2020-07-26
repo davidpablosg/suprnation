@@ -61,4 +61,50 @@ describe('CalculatorService', () => {
             });
         });
     });
+    describe('evaluateExpression', () => {
+        it('should be defined', () => {
+            expect(calculatorService.evaluateExpression).toBeDefined();
+        });
+
+        describe('Valid expressions evaluations', () => {
+            it('The result of 3+2 is 5', () => {
+                expect(calculatorService.evaluateExpression('3+2')).toEqual(5);
+            });
+            it('The result of 3-2 is 1', () => {
+                expect(calculatorService.evaluateExpression('3-2')).toEqual(1);
+            });
+            it('The result of 3*2 is 6', () => {
+                expect(calculatorService.evaluateExpression('3*2')).toEqual(6);
+            });
+            it('The result of 6/2 is 3', () => {
+                expect(calculatorService.evaluateExpression('6/2')).toEqual(3);
+            });
+            it('The result of 3+2*3 is 9', () => {
+                expect(calculatorService.evaluateExpression('3+2*3')).toEqual(9);
+            });
+            it('The result of sin(0) is 0', () => {
+                expect(calculatorService.evaluateExpression('sin(0)')).toEqual(0);
+            });
+            it('The result of sin(0) + cos(0) is 1', () => {
+                expect(calculatorService.evaluateExpression('sin(0)+cos(0)')).toEqual(1);
+            });
+            it('The result of sin(30) - tan(0) is 0', () => {
+                expect(calculatorService.evaluateExpression('sin(0) - tan(0)')).toEqual(0);
+            });
+            it('The result of sin(30) + cos(20) is -0.5799495622794699', () => {
+                expect(calculatorService.evaluateExpression('sin(30)+cos(20)')).toEqual(-0.5799495622794699);
+            });
+        });
+        describe('Invalid expressions throws null', () => {
+            it('The result of cos(1 is null', () => {
+                expect(calculatorService.evaluateExpression('cos(0')).toBeNull();
+            });
+            it('The result of sqrt(9) is null', () => {
+                expect(calculatorService.evaluateExpression('sqrt(9)')).toBeNull();
+            });
+            it('The result of 3/0 is Infinite', () => {
+                expect(calculatorService.evaluateExpression('3/0')).toBe(Infinity);
+            });
+        });
+    });
 });
